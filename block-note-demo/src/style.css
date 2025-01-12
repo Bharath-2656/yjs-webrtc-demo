@@ -1,11 +1,12 @@
 .wrapper {
   display: flex;
-  width: 90%;
+  width: 100%;
   flex-direction: column;
   height: 100%;
 }
 
 .item {
+  width: 90%;
   align-items: left;
   border-radius: 0.5rem;
   flex: 1;
@@ -24,4 +25,42 @@
   padding-inline: 54px;
   width: 100%;
   white-space: pre-wrap;
+}
+
+.edit-buttons {
+  display: flex;
+  justify-content: end;
+  margin-top: 8px;
+}
+
+.edit-button {
+  /* border: 1px solid gray; */
+  border-radius: 4px;
+  padding-inline: 4px;
+  background-color: #8bdc9d;
+}
+
+.edit-button:hover {
+  border: 1px solid lightgrey;
+}
+
+.pdf {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border-radius: 0.5rem;
+}
+iframe {
+  height: 100vh;
+  width: 90vw;
+}
+
+.ProseMirror   { word-wrap: break-word;
+white-space: pre-wrap;
+white-space: break-spaces;
+-webkit-font-variant-ligatures: none;
+font-variant-ligatures: none;
+font-feature-settings: "liga" 0;
+top: 15px;
 }

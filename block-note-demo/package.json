@@ -16,11 +16,17 @@
     "@blocknote/mantine": "^0.22.0",
     "@blocknote/react": "^0.22.0",
     "@blocknote/xl-docx-exporter": "^0.21.0",
+    "@blocknote/xl-pdf-exporter": "^0.22.0",
+    "@faker-js/faker": "^9.3.0",
+    "@react-pdf/renderer": "^4.1.6",
     "buffer": "^6.0.3",
     "docx": "^9.1.1",
+    "dompurify": "^3.2.3",
+    "marked": "^15.0.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "vite-plugin-node-polyfills": "^0.22.0"
+    "vite-plugin-node-polyfills": "^0.22.0",
+    "y-webrtc": "^10.3.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
