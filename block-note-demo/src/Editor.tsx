@@ -12,13 +12,11 @@ import {
 } from "@blocknote/xl-pdf-exporter";
 import "../src/style.css";
 import { PDFViewer } from "@react-pdf/renderer"
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import * as Y from "yjs";
 import { WebrtcProvider } from "y-webrtc";
 import { BlockNoteEditor } from "@blocknote/core";
 import { faker } from '@faker-js/faker';
-import DOMPurify from 'dompurify'
-import { marked } from 'marked'
 
 
 const doc = new Y.Doc();

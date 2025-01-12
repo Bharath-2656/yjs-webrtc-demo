@@ -3,12 +3,15 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://bharath-2656.github.io/yjs-webrtc-demo",
+  "repo": "https://github.com/Bharath-2656/yjs-webrtc-demo",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "sd": "adsasa"
+    "predeploy": "bun run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@blocknote/ariakit": "^0.22.0",
@@ -29,6 +32,7 @@
     "y-webrtc": "^10.3.0"
   },
   "devDependencies": {
+    "gh-pages": "^6.3.0",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
     "@typescript-eslint/eslint-plugin": "^7.2.0",
