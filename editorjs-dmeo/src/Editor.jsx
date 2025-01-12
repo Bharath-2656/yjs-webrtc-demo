@@ -4,6 +4,9 @@ import List from "@editorjs/list";
 import { useEffect, useRef, useState } from "react";
 import * as Y from "yjs";
 import { WebrtcProvider } from "y-webrtc";
+import edjsHTML from "editorjs-html";
+import { exportHtmlToWord } from "./util";
+
 
 const EditorComponent = () => {
   const DEFAULT_INITIAL_DATA = {
@@ -21,6 +24,7 @@ const EditorComponent = () => {
   const [content, setContent] = useState(DEFAULT_INITIAL_DATA);
   const [doc] = useState(() => new Y.Doc()); // Yjs document (singleton for component)
   const [remoteValue, setRemoteValue] = useState("");
+  const [htmlContent, setHtmlContent] = useState("");
 
   const ejInstance = useRef();
   const initEditor = () => {
@@ -33,9 +37,16 @@ const EditorComponent = () => {
       autofocus: true,
       onChange: async (e) => {
         console.log("Content changed", e);
-        console.log(editor.blocks.getCurrentBlockIndex(), "Block index changed");
+        console.log(
+          editor.blocks.getCurrentBlockIndex(),
+          "Block index changed"
+        );
         let content2 = await editor.saver.save();
         console.log(content2);
+        const edjsParser = edjsHTML();
+        let html = edjsParser.parse(content2);
+        setHtmlContent(html);
+        console.log(html, "HTML Content");
         // Update the shared Yjs document
         if (remoteValue != content2) {
           const ymap = doc.getMap("shared-map");
@@ -49,12 +60,11 @@ const EditorComponent = () => {
     });
   };
 
-  useEffect(() => {
-    if (ejInstance.current && remoteValue) {
-      ejInstance.current.render(remoteValue);
-    }
-  }, [remoteValue]);
-
+  // useEffect(() => {
+  //   if (ejInstance.current && remoteValue) {
+  //     ejInstance.current.render(remoteValue);
+  //   }
+  // }, [remoteValue]);
 
   useEffect(() => {
     if (ejInstance.current === null) {
@@ -94,6 +104,11 @@ const EditorComponent = () => {
     };
   }, [doc]);
 
+  async function downloadDocx(params) {
+    exportHtmlToWord(htmlContent, "example.docx");
+
+  }
+
   return (
     <>
       <div id="editorjs"></div>
@@ -103,6 +118,7 @@ const EditorComponent = () => {
           {JSON.stringify(remoteValue)}
         </p>
       </div> */}
+      <button onClick={downloadDocx}>Download DOCX</button>
     </>
   );
 };
